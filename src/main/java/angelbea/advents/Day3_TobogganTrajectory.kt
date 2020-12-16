@@ -3,17 +3,17 @@ package angelbea.advents
 import angelbea.*
 import angelbea.interfaces.IAdventCodes
 
-class Day_3_TobogganTrajectory : IAdventCodes {
+class Day3_TobogganTrajectory : IAdventCodes {
     override val nameOfChallenge: String
         get() = javaClass.simpleName
     override var input: MutableList<String> = ScannerTool().readFileFromDisk(INPUT_FILE_3)
 
     override fun start() {
-        val slope11 =  calculateSlopes(1,1).toLong()
-        val slope13 =  calculateSlopes(1,3).toLong()
-        val slope15 =  calculateSlopes(1,5).toLong()
-        val slope17 =  calculateSlopes(1,7).toLong()
-        val slope21 =  calculateSlopes(2,1, true).toLong()
+        val slope11 =  calculateSlopes(1,1)
+        val slope13 =  calculateSlopes(1,3)
+        val slope15 =  calculateSlopes(1,5)
+        val slope17 =  calculateSlopes(1,7)
+        val slope21 =  calculateSlopes(2,1)
 
         println("Number of trees | Down: 1 | Right: 1 -> $slope11")
         println("Number of trees | Down: 1 | Right: 3 -> $slope13")
@@ -31,7 +31,7 @@ class Day_3_TobogganTrajectory : IAdventCodes {
         * @Return:
         *   numberOfTrees - The total number of trees on this slope
     */
-    fun calculateSlopes(downVal : Int, rightVal : Int, printMapVal : Boolean = false) : Int{
+    fun calculateSlopes(downVal : Int, rightVal : Int, printMapVal : Boolean = false) : Long{
         var numberOfTrees = 0
         var right = rightVal
         val printMap = printMapVal
@@ -44,7 +44,7 @@ class Day_3_TobogganTrajectory : IAdventCodes {
             }
 
             if(line[right].toString() == TREE){
-                //rintln("That's a tree in $down,$right --> ${line[right]}")
+                //println("That's a tree in $down,$right --> ${line[right]}")
                 if (printMap && downVal > 1) println(input[down - downVal + 1])
                 if (printMap) println(line.replaceRange(right..right, "O"))
                 numberOfTrees++
@@ -61,6 +61,6 @@ class Day_3_TobogganTrajectory : IAdventCodes {
             }
         }
 
-        return numberOfTrees
+        return numberOfTrees.toLong()
     }
 }
