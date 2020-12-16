@@ -7,8 +7,7 @@ import angelbea.interfaces.IAdventCodes
 class Day2_PasswordPhilosophy : IAdventCodes {
     override val nameOfChallenge: String
         get() = javaClass.simpleName
-    override val input: MutableList<String>
-        get() = ScannerTool().readFileFromDisk(INPUT_FILE_2)
+    override var input: MutableList<String> = ScannerTool().readFileFromDisk(INPUT_FILE_2)
 
     override fun start() {
         val minMaxFinder = "^\\d*-\\d*".toRegex()

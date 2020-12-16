@@ -2,7 +2,7 @@ package angelbea.interfaces
 
 interface IAdventCodes {
     val nameOfChallenge : String
-    val input : MutableList<String>
+    var input : MutableList<String>
 
     fun start()
     fun run(){
