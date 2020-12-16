@@ -9,7 +9,7 @@ class ScannerTool {
         val scn = Scanner(File(ROOT +nameFile))
         val inputListValue = mutableListOf<String>()
 
-        while (scn.hasNext()){
+        while (scn.hasNextLine()){
             inputListValue.add(scn.nextLine())
         }
 
