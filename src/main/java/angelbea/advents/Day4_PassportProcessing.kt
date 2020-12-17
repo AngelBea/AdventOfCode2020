@@ -26,9 +26,6 @@ class Day4_PassportProcessing : IAdventCodes{
                 Extractors.COUNTRY_ID.extractor.find(passportLine)?.value?.replace("\\w*:".toRegex(), "")
             )
 
-            println("\n-----[${passport.isValid()} PASSPORT $index]-----")
-            println(passportLine.lines().joinToString { it })
-            println(passport)
             listOfPassPorts.add(passport)
         }
 
@@ -40,36 +37,7 @@ class Day4_PassportProcessing : IAdventCodes{
                         var hairColor : String?, var eyeColor : String?, var passportId : String?, var countryId : String?)
 
     fun Passport.isValid(): Boolean{
-        if (this.birthYear == null) {
-            println("$passportIndex NOT VALID --> Reason: Birth Year is null")
-            return false
-        }
-        if (this.issueYear == null) {
-            println("$passportIndex NOT VALID --> Reason: Issue Year is null")
-            return false
-        }
-        if (this.expirationYear == null) {
-            println("$passportIndex NOT VALID --> Reason: Expiration Year is null")
-            return false
-        }
-        if (this.height == null) {
-            println("$passportIndex NOT VALID --> Reason: Height is null")
-            return false
-        }
-        if (this.hairColor == null) {
-            println("$passportIndex NOT VALID --> Reason: Hair Color is null")
-            return false
-        }
-        if (this.eyeColor == null) {
-            println("$passportIndex NOT VALID --> Reason: Eye Color is null")
-            return false
-        }
-        if (this.passportId == null) {
-            println("$passportIndex NOT VALID --> Reason: Passport Id is null")
-            return false
-        }
-
-        return true
+        return listOfNotNull(birthYear, issueYear, expirationYear, height, hairColor, eyeColor, passportId).size >= 7
     }
 
     enum class Extractors(val extractor : Regex){
