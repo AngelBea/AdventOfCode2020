@@ -8,4 +8,6 @@ fun main() {
     Day3_TobogganTrajectory().run()
     Day4_PassportProcessing().run()
     Day5_BinaryBoarding().run()
+    Day6_CustomCustoms().run()
+    Day7_HandyHaversacks().run()
 }
